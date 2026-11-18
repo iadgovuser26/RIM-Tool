@@ -43,6 +43,9 @@ jobs:
         run: |
           ./gradlew clean;
           ./gradlew build;
+      
+      - name: Run Gradle package
+        run: |    
           ./gradlew :buildRpm;
           ./gradlew :buildDeb;
 
