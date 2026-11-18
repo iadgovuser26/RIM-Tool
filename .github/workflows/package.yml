@@ -27,7 +27,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '25'
- 
+
+      - name: install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install git curl nano cron
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v6
 
