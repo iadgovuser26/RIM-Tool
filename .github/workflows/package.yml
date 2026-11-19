@@ -47,8 +47,8 @@ jobs:
   
       - name: Run Gradle package
         run: |    
-          ./gradlew :buildRpm -x :hirs:build
-          ./gradlew :buildDeb -x :hirs:build
+          ./gradlew :clean :buildRpm -x :hirs:build
+          ./gradlew :clean :buildDeb -x :hirs:build
 
       - name: Archive RPM files
         uses: actions/upload-artifact@v7
