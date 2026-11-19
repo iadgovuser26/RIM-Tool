@@ -28,6 +28,13 @@ jobs:
           distribution: 'temurin'
           java-version: '25'
 
+      - name: directory setup
+        run: |
+          mkdir -p artifacts/jars
+          mkdir -p artifacts/rpm
+          mkdir -p artifacts/deb
+          mkdir -p artifacts/win
+      
       - name: install dependencies
         run: |
           sudo apt-get update
@@ -48,29 +55,30 @@ jobs:
       - name: Run Gradle package
         run: |    
           ./gradlew :clean :buildRpm -x :hirs:build
+          cp build/libs/*.jar artifacts/jars/.
+          cp build/distributions/*.rpm artifacts/rpm/.
           ./gradlew :clean :buildDeb -x :hirs:build
+          cp buils/distributions/.deb artifacts/deb/.
 
       - name: Archive RPM files
         uses: actions/upload-artifact@v7
         with:
           name: RPM_Files
-          path: |
-            build/distributions/*.rpm
+          path: artifacts/rpm/*.rpm
           if-no-files-found: error
 
       - name: Archive DEB files
         uses: actions/upload-artifact@v7
         with:
           name: DEB_Files
-          path: |
-            build/distributions/*.deb
+          path: artifacts/deb/*.deb
           if-no-files-found: error
 
       - name: JAR_Files
         uses: actions/upload-artifact@v7
         with: 
           name: JAR_Files
-          path: build/libs/*.jar
+          path: artifacts/jar/*.jar
           if-no-files-found: error
 
   # install the rim-tool packages on clean OS images and check that it runs
