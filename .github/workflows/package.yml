@@ -93,9 +93,11 @@ jobs:
       matrix:
         include:
           - image: ubuntu:26.04
+            name: ubuntu 26.04 test
             artifact: DEB_Files
             install: cd /dist && apt-get update -qq  && apt-get install -y openjdk-25-jdk > /dev/null  && apt-get install -y -qq ./*.deb
           - image: rockylinux:9.9
+            name: rocky 9.9 test
             artifact: RPM_Files
             install: cd /dist && dnf install -y -q java-25-openjdk-devel > /dev/null && dnf install -y ./*.rpm
 
