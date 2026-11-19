@@ -58,7 +58,7 @@ jobs:
           cp build/libs/*.jar artifacts/jars/.
           cp build/distributions/*.rpm artifacts/rpm/.
           ./gradlew :clean :buildDeb -x :hirs:build
-          cp build/distributions/.deb artifacts/deb/.
+          cp build/distributions/*.deb artifacts/deb/.
 
       - name: Archive RPM files
         uses: actions/upload-artifact@v7
