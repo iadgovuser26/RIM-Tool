@@ -88,7 +88,7 @@ jobs:
           - image: ubuntu:24.04
             artifact: DEB_Files
             install: apt-get update -qq && apt-get install -y -qq ./*.deb
-          - image: rockylinux/rockylinux:9.8
+          - image: rockylinux/rockylinux:9.9
             artifact: RPM_Files
             install: dnf install -y ./*.rpm
 
