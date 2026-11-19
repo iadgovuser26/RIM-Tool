@@ -51,13 +51,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-  
+      - name: Run Gradle build
+        run: |    
+          ./gradlew :clean :build
+          cp build/libs/*.jar artifacts/jars/.
+
       - name: Run Gradle package
         run: |    
-          ./gradlew :clean :buildRpm -x :hirs:build
-          cp build/libs/*.jar artifacts/jars/.
+          ./gradlew :clean :buildRpm 
           cp build/distributions/*.rpm artifacts/rpm/.
-          ./gradlew :clean :buildDeb -x :hirs:build
+          ./gradlew :clean :buildDeb 
           cp build/distributions/*.deb artifacts/deb/.
 
       - name: Archive RPM files
