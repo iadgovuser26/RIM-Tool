@@ -94,10 +94,10 @@ jobs:
         include:
           - image: ubuntu:26.04
             artifact: DEB_Files
-            install: cd /dist && apt-get update -qq  && apt-get install -y openjdk-25-jdk > /dev/null && apt-get install -y -qq ./*.deb
+            install: cd /dist && apt-get update -qq  && apt-get install -y openjdk-25-jdk c && apt-get install -y -qq ./*.deb
           - image: rockylinux:9.9
             artifact: RPM_Files
-            install: cd /dist && dnf install -y -q java-25-openjdk-devel && dnf install -y ./*.rpm
+            install: cd /dist && dnf install -y -q java-25-openjdk-devel > /dev/null && dnf install -y ./*.rpm
 
     steps:
       - name: Download packages
