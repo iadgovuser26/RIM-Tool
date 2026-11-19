@@ -30,7 +30,7 @@ jobs:
 
       - name: directory setup
         run: |
-          mkdir -p artifacts/jars
+          mkdir -p artifacts/jar
           mkdir -p artifacts/rpm
           mkdir -p artifacts/deb
           mkdir -p artifacts/win
@@ -54,7 +54,7 @@ jobs:
       - name: Run Gradle build
         run: |    
           ./gradlew :clean :build
-          cp build/libs/*.jar artifacts/jars/.
+          cp build/libs/*.jar artifacts/jar/.
 
       - name: Run Gradle package
         run: |    
