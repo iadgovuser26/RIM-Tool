@@ -97,7 +97,7 @@ jobs:
             install: cd /dist && pwd && ls -al && apt-get update -qq  && apt-get install -y openjdk-25-jdk && apt-get install -y -qq ./*.deb
           - image: rockylinux:9.9
             artifact: RPM_Files
-            install: cd /dist && ls -al && dnf install java-25-openjdk-devel && dnf install -y ./*.rpm
+            install: cd /dist && ls -al && dnf install -y java-25-openjdk-devel && dnf install -y ./*.rpm
 
     steps:
       - name: Download packages
@@ -113,5 +113,5 @@ jobs:
             cd /tmp
             rim --help > help.txt 2>&1 || { cat help.txt; echo "rim --help failed"; exit 1; }
             cat help.txt
-            grep -q -- "--tcp" help.txt
+            grep -q -- "SWID" help.txt
           '
